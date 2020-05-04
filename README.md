@@ -1,6 +1,6 @@
 # PolyCovid
 
-Covid-19 data web application using https://covid19-api.com/ 
+Covid-19 data web application using https://covid19-api.com/  
 By Thibaud Avril-Terrones, Thibault Delorme, Romain Testoud & Dorian Verriere
 
 ## Getting started

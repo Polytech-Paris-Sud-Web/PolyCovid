@@ -11,5 +11,8 @@ export class TweetComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  ngAfterViewInit(): void {
+    // Permet de recharger la timeline twitter
+    (<any>window).twttr.widgets.load();
+  }
 }

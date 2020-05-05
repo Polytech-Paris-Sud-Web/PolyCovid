@@ -13,7 +13,7 @@ import { Routes, RouterModule } from '@angular/router';
 const appRoutes: Routes = [
   { path: '', component: DataComponent },
   { path: 'data', component: DataComponent },
-  { path: 'data/:name', component: DataComponent },
+  { path: 'data/:country', component: DataComponent },
   { path: 'map', component: MapComponent },
   { path: 'tweets', component: TweetComponent }
 ]

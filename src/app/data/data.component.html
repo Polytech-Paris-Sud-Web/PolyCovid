@@ -7,10 +7,10 @@
                     <br />
                     <h3><b>CONFIRMED</b></h3>
                 </div>
-                <div *ngIf="confirmed()!=='...'" class="card-text">
-                    {{confirmed()}}
+                <div *ngIf="this.confirmed()!=='...'" class="card-text">
+                    {{this.confirmed()}}
                 </div>
-                <div *ngIf="confirmed()==='...'" class="card-text">
+                <div *ngIf="this.confirmed()==='...'" class="card-text">
                     <span class="spinner">
                         Loading...
                     </span>
@@ -26,10 +26,10 @@
                     <br />
                     <h3><b>RECOVERED</b></h3>
                 </div>
-                <div *ngIf="recovered()!=='...'" class="card-text">
-                    {{recovered()}}
+                <div *ngIf="this.recovered()!=='...'" class="card-text">
+                    {{this.recovered()}}
                 </div>
-                <div *ngIf="recovered()==='...'" class="card-text">
+                <div *ngIf="this.recovered()==='...'" class="card-text">
                     <span class="spinner">
                         Loading...
                     </span>
@@ -47,10 +47,10 @@
                     <h3><b>CRITICAL</b></h3>
                 </div>
 
-                <div *ngIf="critical()!=='...'" class="card-text">
-                    {{critical()}}
+                <div *ngIf="this.critical()!=='...'" class="card-text">
+                    {{this.critical()}}
                 </div>
-                <div *ngIf="critical()==='...'" class="card-text">
+                <div *ngIf="this.critical()==='...'" class="card-text">
                     <span class="spinner">
                         Loading...
                     </span>
@@ -66,10 +66,10 @@
                     <br />
                     <h3><b>DEATHS</b></h3>
                 </div>
-                <div *ngIf="deaths()!=='...'" class="card-text">
-                    {{deaths()}}
+                <div *ngIf="this.deaths()!=='...'" class="card-text">
+                    {{this.deaths()}}
                 </div>
-                <div *ngIf="deaths()==='...'" class="card-text">
+                <div *ngIf="this.deaths()==='...'" class="card-text">
                     <span class="spinner">
                         Loading...
                     </span>

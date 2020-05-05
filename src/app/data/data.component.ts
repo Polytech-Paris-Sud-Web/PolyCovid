@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import * as data from './latest-total.json'; //TODO: use file in cache
 
 @Component({
   selector: 'app-data',
@@ -14,28 +15,32 @@ export class DataComponent implements OnInit {
   private _critical: number;
   private _deaths: number;
 
-  private confirmed(): string {
+  confirmed(): string {
     if (this._confirmed == -1)
       return "...";
     return this._confirmed.toString();
   }
 
-  private recovered(): string {
+  recovered(): string {
     if (this._recovered == -1)
       return "...";
     return this._recovered.toString();
   }
 
-  private critical(): string {
+  critical(): string {
     if (this._critical == -1)
       return "...";
     return this._critical.toString();
   }
 
-  private deaths(): string {
+  deaths(): string {
     if (this._deaths == -1)
       return "...";
     return this._deaths.toString();
+  }
+
+  private load_data(): void {
+
   }
 
   constructor(private route: ActivatedRoute) {
@@ -49,6 +54,8 @@ export class DataComponent implements OnInit {
     this._recovered = -1;
     this._critical = -1;
     this._deaths = -1;
+
+    this.load_data();
 
   }
 

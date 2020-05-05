@@ -9,6 +9,8 @@ import { MapComponent } from './map/map.component';
 import { TweetComponent } from './tweet/tweet.component';
 import { DataComponent } from './data/data.component';
 import { Routes, RouterModule } from '@angular/router';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const appRoutes: Routes = [
   { path: '', component: DataComponent },
@@ -30,7 +32,8 @@ const appRoutes: Routes = [
     AppRoutingModule,
     ClarityModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import * as data from './latest-total.json'; //TODO: use file in cache
+import data from './latesttotal.json';
+//TODO: use file in cache
 
 @Component({
   selector: 'app-data',
   templateUrl: './data.component.html',
   styleUrls: ['./data.component.css']
 })
+
 export class DataComponent implements OnInit {
 
   private _country: string;
@@ -16,34 +18,44 @@ export class DataComponent implements OnInit {
   private _deaths: number;
 
   confirmed(): string {
-    if (this._confirmed == -1)
+    if (this._confirmed == -1 || this._confirmed == null)
       return "...";
     return this._confirmed.toString();
   }
 
   recovered(): string {
-    if (this._recovered == -1)
+    if (this._recovered == -1 || this._recovered == null)
       return "...";
     return this._recovered.toString();
   }
 
   critical(): string {
-    if (this._critical == -1)
+    if (this._critical == -1 || this._critical == null)
       return "...";
     return this._critical.toString();
   }
 
   deaths(): string {
-    if (this._deaths == -1)
+    if (this._deaths == -1 || this._deaths == null)
       return "...";
     return this._deaths.toString();
   }
 
-  private load_data(): void {
-
+  private load_data(country: string): void {
+    if (country == null)
+    {
+      console.log(data);
+      this._confirmed = data[0]["confirmed"];
+      this._recovered = data[0]['recovered'];
+      this._critical = data[0]['active'];
+      this._deaths = data[0]['deaths'];
+    }
   }
 
   constructor(private route: ActivatedRoute) {
+  }
+
+  ngOnInit() {
     this._country = this.route.snapshot.paramMap.get('country');
     if (this._country !== null)
       console.log("Display data for country " + this._country);
@@ -55,11 +67,8 @@ export class DataComponent implements OnInit {
     this._critical = -1;
     this._deaths = -1;
 
-    this.load_data();
+    this.load_data(this._country);
 
-  }
-
-  ngOnInit() {
   }
 
 }

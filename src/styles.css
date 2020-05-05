@@ -1,7 +1,3 @@
-html{
-    height: 100% !important;
-}
-
-body{
+html, clr-main-container{
     height: 100%;
 }

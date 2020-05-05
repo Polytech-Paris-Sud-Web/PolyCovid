@@ -15,7 +15,7 @@ import { environment } from '../environments/environment';
 const appRoutes: Routes = [
   { path: '', component: DataComponent },
   { path: 'data', component: DataComponent },
-  { path: 'data/:name', component: DataComponent },
+  { path: 'data/:country', component: DataComponent },
   { path: 'map', component: MapComponent },
   { path: 'tweets', component: TweetComponent }
 ]

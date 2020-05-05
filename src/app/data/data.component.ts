@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-data',
@@ -7,7 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataComponent implements OnInit {
 
-  constructor() { }
+  private country: string;
+
+  constructor(private route: ActivatedRoute) {
+    this.country = this.route.snapshot.paramMap.get('country');
+    if (this.country !== null)
+      console.log("Display data for country " + this.country);
+    else
+      console.log("Display data for the entire world");
+
+  }
 
   ngOnInit() {
   }

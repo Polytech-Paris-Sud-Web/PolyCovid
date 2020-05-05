@@ -7,10 +7,10 @@
                     <br />
                     <h3><b>CONFIRMED</b></h3>
                 </div>
-                <div *ngIf="this.confirmed()!=='...'" class="card-text">
-                    {{this.confirmed()}}
+                <div *ngIf="this.dataRetrievalService.totals()[0]['confirmed']!==-1" class="card-text">
+                    {{this.dataRetrievalService.totals()[0]['confirmed']}}
                 </div>
-                <div *ngIf="this.confirmed()==='...'" class="card-text">
+                <div *ngIf="this.dataRetrievalService.totals()[0]['confirmed']===-1" class="card-text">
                     <span class="spinner">
                         Loading...
                     </span>
@@ -26,10 +26,10 @@
                     <br />
                     <h3><b>RECOVERED</b></h3>
                 </div>
-                <div *ngIf="this.recovered()!=='...'" class="card-text">
-                    {{this.recovered()}}
+                <div *ngIf="this.dataRetrievalService.totals()[0]['recovered']!==-1" class="card-text">
+                    {{this.dataRetrievalService.totals()[0]['recovered']}}
                 </div>
-                <div *ngIf="this.recovered()==='...'" class="card-text">
+                <div *ngIf="this.dataRetrievalService.totals()[0]['recovered']===-1" class="card-text">
                     <span class="spinner">
                         Loading...
                     </span>
@@ -47,10 +47,10 @@
                     <h3><b>CRITICAL</b></h3>
                 </div>
 
-                <div *ngIf="this.critical()!=='...'" class="card-text">
-                    {{this.critical()}}
+                <div *ngIf="this.dataRetrievalService.totals()[0]['critical']!==-1" class="card-text">
+                    {{this.dataRetrievalService.totals()[0]['critical']}}
                 </div>
-                <div *ngIf="this.critical()==='...'" class="card-text">
+                <div *ngIf="this.dataRetrievalService.totals()[0]['critical']===-1" class="card-text">
                     <span class="spinner">
                         Loading...
                     </span>
@@ -66,10 +66,10 @@
                     <br />
                     <h3><b>DEATHS</b></h3>
                 </div>
-                <div *ngIf="this.deaths()!=='...'" class="card-text">
-                    {{this.deaths()}}
+                <div *ngIf="this.dataRetrievalService.totals()[0]['deaths']!==-1" class="card-text">
+                    {{this.dataRetrievalService.totals()[0]['critical']}}
                 </div>
-                <div *ngIf="this.deaths()==='...'" class="card-text">
+                <div *ngIf="this.dataRetrievalService.totals()[0]['deaths']===-1" class="card-text">
                     <span class="spinner">
                         Loading...
                     </span>

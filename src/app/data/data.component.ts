@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import data from './latesttotal.json';
 import { SwUpdate } from '@angular/service-worker';
 import { CheckForUpdateService } from '../services/check-for-update-service.service';
 //TODO: use file in cache
+
+import { DataRetrievalService } from 'src/services/data-retrieval.service';
+
 
 @Component({
   selector: 'app-data',
@@ -45,24 +47,24 @@ export class DataComponent implements OnInit {
   }
 
   private load_data(country: string): void {
-    if (country == null)
-    {
-      console.log(data);
-      this._confirmed = data[0]["confirmed"];
-      this._recovered = data[0]['recovered'];
-      this._critical = data[0]['active'];
-      this._deaths = data[0]['deaths'];
+    if (country == null) {
+      this._confirmed = this.dataRetrievalService.totals()[0]["confirmed"];
+      this._recovered = this.dataRetrievalService.totals()[0]['recovered'];
+      this._critical = this.dataRetrievalService.totals()[0]['active'];
+      this._deaths = this.dataRetrievalService.totals()[0]['deaths'];
+
     }
   }
 
   // constructor(private route: ActivatedRoute, private swUpdate: SwUpdate) {
   // }
   constructor(private route: ActivatedRoute, private swUpdate: SwUpdate,
-    private checkForUpdateService: CheckForUpdateService) {
-      this.swUpdate.available.subscribe((event) => {
-        this.updateAvailable = true;
-      });
-    }
+    private checkForUpdateService: CheckForUpdateService, public dataRetrievalService: DataRetrievalService) {
+    this.swUpdate.available.subscribe((event) => {
+      this.updateAvailable = true;
+    });
+    this.load_data(this._country);
+  }
 
   ngOnInit() {
 
@@ -73,7 +75,6 @@ export class DataComponent implements OnInit {
     //       }
     //   });
     // }  
-
 
     this._country = this.route.snapshot.paramMap.get('country');
     if (this._country !== null)
@@ -87,7 +88,6 @@ export class DataComponent implements OnInit {
     this._deaths = -1;
 
     this.load_data(this._country);
-
   }
 
 }

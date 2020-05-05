@@ -13,6 +13,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ToasterComponent } from './toaster/toaster.component';
 import { CheckForUpdateService } from './services/check-for-update-service.service';
+import { HttpClientModule } from '@angular/common/http'; 
 
 const appRoutes: Routes = [
   { path: '', component: DataComponent },
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
     ClarityModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    HttpClientModule
   ],
   providers: [CheckForUpdateService],
   bootstrap: [AppComponent]

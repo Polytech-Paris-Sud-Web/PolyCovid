@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import data from './latesttotal.json';
+import { SwUpdate } from '@angular/service-worker';
+import { CheckForUpdateService } from '../services/check-for-update-service.service';
 //TODO: use file in cache
 
 @Component({
@@ -16,6 +18,7 @@ export class DataComponent implements OnInit {
   private _recovered: number;
   private _critical: number;
   private _deaths: number;
+  updateAvailable = false;
 
   confirmed(): string {
     if (this._confirmed == -1 || this._confirmed == null)
@@ -52,10 +55,26 @@ export class DataComponent implements OnInit {
     }
   }
 
-  constructor(private route: ActivatedRoute) {
-  }
+  // constructor(private route: ActivatedRoute, private swUpdate: SwUpdate) {
+  // }
+  constructor(private route: ActivatedRoute, private swUpdate: SwUpdate,
+    private checkForUpdateService: CheckForUpdateService) {
+      this.swUpdate.available.subscribe((event) => {
+        this.updateAvailable = true;
+      });
+    }
 
   ngOnInit() {
+
+    // if (this.swUpdate.isEnabled) {
+    //   this.swUpdate.available.subscribe(() => {
+    //       if(confirm("New version available. Load New Version?")) {
+    //           window.location.reload();
+    //       }
+    //   });
+    // }  
+
+
     this._country = this.route.snapshot.paramMap.get('country');
     if (this._country !== null)
       console.log("Display data for country " + this._country);

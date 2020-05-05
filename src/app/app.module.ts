@@ -11,6 +11,8 @@ import { DataComponent } from './data/data.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ToasterComponent } from './toaster/toaster.component';
+import { CheckForUpdateService } from './services/check-for-update-service.service';
 
 const appRoutes: Routes = [
   { path: '', component: DataComponent },
@@ -25,7 +27,8 @@ const appRoutes: Routes = [
     AppComponent,
     MapComponent,
     TweetComponent,
-    DataComponent
+    DataComponent,
+    ToasterComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [CheckForUpdateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

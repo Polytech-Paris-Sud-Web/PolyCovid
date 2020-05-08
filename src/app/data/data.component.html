@@ -1,5 +1,5 @@
 <div class="clr-row clr-justify-content-center" style="height: 100%; width:100%;">
-    <img src="https://www.countryflags.io/{{this._country_alpha2}}/flat/64.png">
+    <img *ngIf="this._country !== null" src="https://www.countryflags.io/{{this._country_alpha2}}/flat/64.png">
     <div class="clr-col-lg-2 clr-col-md-5 clr-col-xs-9 clr-align-self-center">
         <div class="card text-center">
             <div class="card-block">
@@ -98,3 +98,10 @@
         </div>
     </div>
 </div>
+
+<a *ngIf="this._country !== null" href="https://twitter.com/intent/tweet?button_hashtag=PolyCovid&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-text="Observez l&#39;état de propagation du #Covid19 sur" data-url="https://Polycovid.net/data/{{this._country}}" data-lang="fr" data-show-count="true">Tweet it!</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{{this._country}}
+
+<a *ngIf="this._country === null" href="https://twitter.com/intent/tweet?button_hashtag=PolyCovid&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-text="Observez l&#39;état de propagation du #Covid19 sur" data-url="https://Polycovid.net" data-lang="fr" data-show-count="true">Tweet it!</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

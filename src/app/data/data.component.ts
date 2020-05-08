@@ -21,7 +21,7 @@ export class DataComponent implements OnInit {
   private _recovered: number;
   private _critical: number;
   private _deaths: number;
-  updateAvailable = false;
+  private updateAvailable = false;
 
   confirmed(): string {
     if (this._confirmed == -1 || this._confirmed == null)
@@ -77,8 +77,6 @@ export class DataComponent implements OnInit {
     }
   }
 
-  // constructor(private route: ActivatedRoute, private swUpdate: SwUpdate) {
-  // }
   constructor(private route: ActivatedRoute, private swUpdate: SwUpdate,
     private checkForUpdateService: CheckForUpdateService, public dataRetrievalService: DataRetrievalService) {
     this.load_data(this._country);
@@ -109,6 +107,11 @@ export class DataComponent implements OnInit {
     this._deaths = -1;
 
     this.load_data(this._country);
+  }
+
+  ngAfterViewInit(): void {
+    // Permet de recharger le bouton twitter
+    (<any>window).twttr.widgets.load();
   }
 
 }

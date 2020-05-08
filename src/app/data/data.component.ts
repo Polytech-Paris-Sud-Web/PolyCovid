@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
 import { CheckForUpdateService } from '../services/check-for-update-service.service';
-//TODO: use file in cache
+import CountryCode from './countries.json'
 
 import { DataRetrievalService } from 'src/services/data-retrieval.service';
 
@@ -16,6 +16,7 @@ import { DataRetrievalService } from 'src/services/data-retrieval.service';
 export class DataComponent implements OnInit {
 
   _country: string;
+  private _country_alpha2: string; //used to get flag
   private _confirmed: number;
   private _recovered: number;
   private _critical: number;
@@ -44,6 +45,22 @@ export class DataComponent implements OnInit {
     if (this._deaths == -1 || this._deaths == null)
       return "...";
     return this._deaths.toString();
+  }
+
+  resolve_name(str: string): void {
+    this._country = null; //def ret val
+    if (str !== null && str !== undefined) {
+      str = str.toUpperCase();
+      for (let index = 0; index < CountryCode.length; index++) {
+        const c = CountryCode[index];
+        if (str === c['name'].toUpperCase() || (c['alpha2code'] !== null && str === c['alpha2code'].toUpperCase()) || (c['alpha3code'] !== null && str === c['alpha3code'].toUpperCase())) {
+          this._country = c['name'];
+          this._country_alpha2 = c['alpha2code'].toLocaleLowerCase();
+          console.log(c['alpha2code']);
+          break;
+        }
+      }
+    }
   }
 
   private load_data(country: string): void {
@@ -80,8 +97,7 @@ export class DataComponent implements OnInit {
     //       }
     //   });
     // }  
-
-    this._country = this.route.snapshot.paramMap.get('country');
+    this.resolve_name(this.route.snapshot.paramMap.get('country'));
     if (this._country !== null)
       console.log("Display data for country " + this._country);
     else

@@ -15,7 +15,7 @@ import { DataRetrievalService } from 'src/services/data-retrieval.service';
 
 export class DataComponent implements OnInit {
 
-  private _country: string;
+  _country: string;
   private _confirmed: number;
   private _recovered: number;
   private _critical: number;
@@ -52,7 +52,11 @@ export class DataComponent implements OnInit {
       this._recovered = this.dataRetrievalService.totals()[0]['recovered'];
       this._critical = this.dataRetrievalService.totals()[0]['active'];
       this._deaths = this.dataRetrievalService.totals()[0]['deaths'];
-
+    } else {
+      this._confirmed = this.dataRetrievalService.country_data(this._country)[0]["confirmed"];
+      this._recovered = this.dataRetrievalService.country_data(this._country)[0]['recovered'];
+      this._critical = this.dataRetrievalService.country_data(this._country)[0]['active'];
+      this._deaths = this.dataRetrievalService.country_data(this._country)[0]['deaths'];
     }
   }
 
@@ -60,10 +64,11 @@ export class DataComponent implements OnInit {
   // }
   constructor(private route: ActivatedRoute, private swUpdate: SwUpdate,
     private checkForUpdateService: CheckForUpdateService, public dataRetrievalService: DataRetrievalService) {
+    this.load_data(this._country);
     this.swUpdate.available.subscribe((event) => {
       this.updateAvailable = true;
     });
-    this.load_data(this._country);
+
   }
 
   ngOnInit() {

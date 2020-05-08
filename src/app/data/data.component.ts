@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
 import { CheckForUpdateService } from '../services/check-for-update-service.service';
-import CountryCode from './countries.json'
+import CountryCode from '../../assets/countries.json'
 
 import { DataRetrievalService } from 'src/services/data-retrieval.service';
 
@@ -16,7 +16,7 @@ import { DataRetrievalService } from 'src/services/data-retrieval.service';
 export class DataComponent implements OnInit {
 
   _country: string;
-  private _country_alpha2: string; //used to get flag
+  _country_alpha2: string; //used to get flag
   private _confirmed: number;
   private _recovered: number;
   private _critical: number;

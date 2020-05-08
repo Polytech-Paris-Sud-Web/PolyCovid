@@ -1,4 +1,5 @@
 <div class="clr-row clr-justify-content-center" style="height: 100%; width:100%;">
+    <img src="https://www.countryflags.io/{{this._country_alpha2}}/flat/64.png">
     <div class="clr-col-lg-2 clr-col-md-5 clr-col-xs-9 clr-align-self-center">
         <div class="card text-center">
             <div class="card-block">
@@ -7,10 +8,12 @@
                     <br />
                     <h3><b>CONFIRMED</b></h3>
                 </div>
-                <div *ngIf="this._country === null && this.dataRetrievalService.totals()[0]['confirmed']!==-1" class="card-text">
+                <div *ngIf="this._country === null && this.dataRetrievalService.totals()[0]['confirmed']!==-1"
+                    class="card-text">
                     {{this.dataRetrievalService.totals()[0]['confirmed']}}
                 </div>
-                <div *ngIf="this._country !== null && this.dataRetrievalService.country_data(this._country)['confirmed']!==-1" class="card-text">
+                <div *ngIf="this._country !== null && this.dataRetrievalService.country_data(this._country)['confirmed']!==-1"
+                    class="card-text">
                     {{this.dataRetrievalService.country_data(this._country)['confirmed']}}
                 </div>
                 <div *ngIf="this.dataRetrievalService.totals()[0]['confirmed']===-1" class="card-text">
@@ -29,10 +32,12 @@
                     <br />
                     <h3><b>RECOVERED</b></h3>
                 </div>
-                <div *ngIf="this._country === null && this.dataRetrievalService.totals()[0]['recovered']!==-1" class="card-text">
+                <div *ngIf="this._country === null && this.dataRetrievalService.totals()[0]['recovered']!==-1"
+                    class="card-text">
                     {{this.dataRetrievalService.totals()[0]['recovered']}}
                 </div>
-                <div *ngIf="this._country !== null && this.dataRetrievalService.country_data(this._country)['recovered']!==-1" class="card-text">
+                <div *ngIf="this._country !== null && this.dataRetrievalService.country_data(this._country)['recovered']!==-1"
+                    class="card-text">
                     {{this.dataRetrievalService.country_data(this._country)['recovered']}}
                 </div>
                 <div *ngIf="this.dataRetrievalService.totals()[0]['recovered']===-1" class="card-text">
@@ -52,10 +57,12 @@
                     <br />
                     <h3><b>CRITICAL</b></h3>
                 </div>
-                <div *ngIf="this._country === null && this.dataRetrievalService.totals()[0]['critical']!==-1" class="card-text">
+                <div *ngIf="this._country === null && this.dataRetrievalService.totals()[0]['critical']!==-1"
+                    class="card-text">
                     {{this.dataRetrievalService.totals()[0]['critical']}}
                 </div>
-                <div *ngIf="this._country !== null && this.dataRetrievalService.country_data(this._country)['critical']!==-1" class="card-text">
+                <div *ngIf="this._country !== null && this.dataRetrievalService.country_data(this._country)['critical']!==-1"
+                    class="card-text">
                     {{this.dataRetrievalService.country_data(this._country)['critical']}}
                 </div>
                 <div *ngIf="this.dataRetrievalService.totals()[0]['critical']===-1" class="card-text">
@@ -74,10 +81,12 @@
                     <br />
                     <h3><b>DEATHS</b></h3>
                 </div>
-                <div *ngIf="this._country === null && this.dataRetrievalService.totals()[0]['deaths']!==-1" class="card-text">
+                <div *ngIf="this._country === null && this.dataRetrievalService.totals()[0]['deaths']!==-1"
+                    class="card-text">
                     {{this.dataRetrievalService.totals()[0]['deaths']}}
                 </div>
-                <div *ngIf="this._country !== null && this.dataRetrievalService.country_data(this._country)['deaths']!==-1" class="card-text">
+                <div *ngIf="this._country !== null && this.dataRetrievalService.country_data(this._country)['deaths']!==-1"
+                    class="card-text">
                     {{this.dataRetrievalService.country_data(this._country)['deaths']}}
                 </div>
                 <div *ngIf="this.dataRetrievalService.totals()[0]['deaths']===-1" class="card-text">

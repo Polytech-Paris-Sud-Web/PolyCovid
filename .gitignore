@@ -1,5 +1,9 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# secret files
+
+*.pem
+
 # compiled output
 /dist
 /tmp

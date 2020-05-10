@@ -6,7 +6,24 @@
     </div>
 </ng-template>
 
-<div class="clr-row clr-justify-content-center" style="height: 100%; width: 100%;">
+<div *ngIf="is_search" class="clr-row clr-justify-content-center">
+    <div class="clr-col-lg-10 clr-col-md-10 clr-col-sm-10 clr-col-10" style="text-align: center;">
+        <div *ngIf="totals_loaded && countries_data_loaded; else loading" class="clr-row clr-justify-content-center">
+            <div class="clr-col-xl-2 clr-col-lg-3 clr-col-md-4 clr-col-sm-6" *ngFor="let country of listCountries">
+                <a class="card clickable" [routerLink]="['/data/', country]" (click)="countryOnClick(country)">
+                  <div class="card-header">
+                    {{ country }}
+                  </div>
+                  <div class="card-img">
+                    <!-- <img  *ngIf="company.data.crunchbase.image" [src]="company.data.crunchbase.image" /> -->
+                  </div>
+                </a>
+              </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!is_search" class="clr-row clr-justify-content-center" style="height: 100%; width: 100%;">
     <div class="clr-col-lg-1 clr-col-md-1 clr-col-sm-2 clr-col-2" style="height: 100%;">
         <img *ngIf="country" src="https://www.countryflags.io/{{this.country.alpha2}}/flat/64.png" style="height: 100%; width: 100%;">
     </div>

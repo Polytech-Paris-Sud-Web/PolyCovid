@@ -13,13 +13,14 @@
     </div>
     <form class="search">
       <label for="search_input"></label>
-      <input id="search_input" type="text" placeholder="Search by country name...">
+      <input id="search_input" type="text" placeholder="Search by country name..." (keyup)="searchCountry()">
     </form>
   </clr-header>
 
   <div class="content-container">
     <div class="content-area">
-      <router-outlet></router-outlet>
+      <app-data *ngIf="is_search" [search]=search (countryChoosen)="onChoosenCountry($event)"></app-data>
+      <router-outlet *ngIf="!is_search"></router-outlet>
     </div>
   </div>
 </clr-main-container>

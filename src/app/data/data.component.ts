@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
 import { CheckForUpdateService } from '../services/check-for-update-service.service';
 import CountryCode from '../../assets/countries.json'
@@ -18,16 +18,23 @@ export interface Data{
   deaths: number
 }
 
+
 @Component({
   selector: 'app-data',
   templateUrl: './data.component.html',
   styleUrls: ['./data.component.css']
 })
 
-export class DataComponent implements OnInit {
+export class DataComponent implements OnInit, OnChanges {
   totals : Data
   countries_data : {name: string, data: Data}[];
   private updateAvailable = false;
+
+  @Input("search")
+  search : string;
+  @Output() countryChoosen = new EventEmitter<string>();
+  is_search : boolean = false;
+  listCountries : string[];
 
   country: Country;
   data: Data;
@@ -36,6 +43,7 @@ export class DataComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private swUpdate: SwUpdate,
     private checkForUpdateService: CheckForUpdateService,
     public dataRetrievalService: DataRetrievalService
@@ -64,6 +72,19 @@ export class DataComponent implements OnInit {
   ngAfterViewInit(): void {
     // Permet de recharger le bouton twitter
     (<any>window).twttr.widgets.load();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.is_search = (this.search!="");
+    this.listCountries = this.countries_data.map(country => {
+      if(country.name.toLocaleLowerCase().includes(this.search.toLocaleLowerCase())) return country.name
+    }).reduce((acc, country) => {
+      return country ? acc.concat(country) : acc;
+    }, []);
+  }
+
+  countryOnClick(country : string){
+    this.countryChoosen.emit(country);
   }
 
   private updateTotals(){

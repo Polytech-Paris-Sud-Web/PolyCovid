@@ -1,1 +1,42 @@
-<p>map works!</p>
+<ng-template #loading>
+    <div class="card" style="text-align: center;">
+        <span class="spinner">
+            Loading...
+        </span>
+    </div>
+</ng-template>
+
+<div class="clr-row clr-justify-content-center">
+    <div class="clr-col-lg-10 clr-col-md-10 clr-col-sm-10 clr-col-12 D clr-align-items-center">
+        <div class="clr-row clr-justify-content-center">
+            <div class="clr-col-lg-3 clr-col-md-3 clr-col-sm-6 clr-col-10 clr-align-self-center" style="text-align: center;">
+                <button class="btn btn-primary" (click)="changeStatus('confirmed')"><img src="../../assets/confirmed.svg" style="height: 1.5rem; width: 1.5rem;"/> Confirmed</button>
+            </div>
+            <div class="clr-col-lg-3 clr-col-md-3 clr-col-sm-6 clr-col-10 clr-align-self-center" style="text-align: center;">
+                <button class="btn btn-primary" (click)="changeStatus('recovered')"><img src="../../assets/recovered.svg" style="height: 1.5rem; width: 1.5rem;"/> Recovered</button>
+            </div>
+            <div class="clr-col-lg-3 clr-col-md-3 clr-col-sm-6 clr-col-10 clr-align-self-center" style="text-align: center;">
+                <button class="btn btn-primary" (click)="changeStatus('critical')"><img src="../../assets/critical.svg" style="height: 1.5rem; width: 1.5rem;"/> Critical</button>
+            </div>
+            <div class="clr-col-lg-3 clr-col-md-3 clr-col-sm-6 clr-col-10 clr-align-self-center" style="text-align: center;">
+                <button class="btn btn-primary" (click)="changeStatus('deaths')"><img src="../../assets/death.svg" style="height: 1.5rem; width: 1.5rem;"/> Deaths</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clr-row clr-justify-content-center">
+    <div class="clr-col-lg-10 clr-col-md-10 clr-col-sm-10 clr-col-12 clr-justify-content-center clr-align-items-center">
+        <div class="card" *ngIf="mapdata_created; else loading">
+            <div class="card-header">
+                <h3 div="status">{{status}}</h3>
+            </div>
+            <div class="card-block">
+                <countries-map #cmap [data]="mapData"></countries-map>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -23,4 +23,4 @@ npm install
 npm start
 ```
 
-You can now try your app on http://localhost:4200
+You can now try your app on http://localhost:8080

@@ -11,10 +11,12 @@ export class DataRetrievalService {
   ) {}
 
   getTotals() : Observable<any> {
+    console.log("service.getTotals")
     return this.httpClient.get('https://covid19-api.com/totals?format=json')
   }
   
   getCountriesData() : Observable<any>{
+    console.log("service.getCountriesData")
     return this.httpClient.get('https://covid19-api.com/country/all?format=json')
   }
 }

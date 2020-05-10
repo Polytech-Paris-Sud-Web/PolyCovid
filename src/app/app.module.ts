@@ -15,6 +15,8 @@ import { ToasterComponent } from './toaster/toaster.component';
 import { CheckForUpdateService } from './services/check-for-update-service.service';
 import { HttpClientModule } from '@angular/common/http'; 
 
+import { CountriesMapModule } from 'countries-map';
+
 const appRoutes: Routes = [
   { path: '', component: DataComponent },
   { path: 'data', component: DataComponent },
@@ -38,7 +40,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    HttpClientModule
+    HttpClientModule,
+    CountriesMapModule
   ],
   providers: [CheckForUpdateService],
   bootstrap: [AppComponent]

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng build --prod & http-server dist/polycovid/",
+    "start": "ng build --prod && cd dist && if [ ! -f cert.pem ]; then openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem -subj \"/C=FR/ST=IDF/L=Orsay/O=Polytech/CN=PolyCovid\"; fi && http-server -S -C cert.pem ../dist/polycovid/",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -26,6 +26,7 @@
     "@clr/icons": "3.1.1",
     "@clr/ui": "3.1.1",
     "@webcomponents/webcomponentsjs": "^2.0.0",
+    "http-server": "^0.12.3",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

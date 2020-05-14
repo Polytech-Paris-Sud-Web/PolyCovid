@@ -8,7 +8,7 @@
 
 <div *ngIf="is_search" class="clr-row clr-justify-content-center">
     <div class="clr-col-lg-10 clr-col-md-10 clr-col-sm-10 clr-col-10" style="text-align: center;">
-        <div *ngIf="totals_loaded && countries_data_loaded; else loading" class="clr-row clr-justify-content-center">
+        <div class="clr-row clr-justify-content-center">
             <div class="clr-col-xl-2 clr-col-lg-3 clr-col-md-4 clr-col-sm-6" *ngFor="let country of listCountries">
                 <a class="card clickable" [routerLink]="['/data/', country]" (click)="countryOnClick(country)">
                   <div class="card-header">
@@ -37,7 +37,7 @@
                             <br />
                             <h3><b>CONFIRMED</b></h3>
                         </div>
-                        <div *ngIf="totals_loaded && countries_data_loaded; else loading" class="card-text">
+                        <div class="card-text">
                             {{data.confirmed}}
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                             <br />
                             <h3><b>RECOVERED</b></h3>
                         </div>
-                        <div *ngIf="totals_loaded && countries_data_loaded; else loading" class="card-text">
+                        <div class="card-text">
                             {{data.recovered}}
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                             <br />
                             <h3><b>CRITICAL</b></h3>
                         </div>
-                        <div *ngIf="totals_loaded && countries_data_loaded; else loading" class="card-text">
+                        <div class="card-text">
                             {{data.critical}}
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                             <br />
                             <h3><b>DEATHS</b></h3>
                         </div>
-                        <div *ngIf="totals_loaded && countries_data_loaded; else loading" class="card-text">
+                        <div class="card-text">
                             {{data.deaths}}
                         </div>
                     </div>

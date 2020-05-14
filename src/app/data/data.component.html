@@ -11,21 +11,22 @@
         <div class="clr-row clr-justify-content-center">
             <div class="clr-col-xl-2 clr-col-lg-3 clr-col-md-4 clr-col-sm-6" *ngFor="let country of listCountries">
                 <a class="card clickable" [routerLink]="['/data/', country]" (click)="countryOnClick(country)">
-                  <div class="card-header">
-                    {{ country }}
-                  </div>
-                  <div class="card-img">
-                    <!-- <img  *ngIf="company.data.crunchbase.image" [src]="company.data.crunchbase.image" /> -->
-                  </div>
+                    <div class="card-header">
+                        {{ country }}
+                    </div>
+                    <div class="card-img">
+                        <!-- <img  *ngIf="company.data.crunchbase.image" [src]="company.data.crunchbase.image" /> -->
+                    </div>
                 </a>
-              </div>
+            </div>
         </div>
     </div>
 </div>
 
 <div *ngIf="!is_search" class="clr-row clr-justify-content-center" style="height: 100%; width: 100%;">
     <div class="clr-col-lg-1 clr-col-md-1 clr-col-sm-2 clr-col-2" style="height: 100%;">
-        <img *ngIf="country" src="https://www.countryflags.io/{{this.country.alpha2}}/flat/64.png" style="height: 100%; width: 100%;">
+        <img *ngIf="country" src="https://www.countryflags.io/{{this.country.alpha2}}/flat/64.png"
+            style="height: 100%; width: 100%;">
     </div>
     <div class="clr-col-lg-11 clr-col-md-11 clr-col-sm-10 clr-col-10" style="height: 100%;">
         <div class="clr-row clr-justify-content-center clr-align-self-center" style="height: 100%; width: 100%;">
@@ -33,7 +34,8 @@
                 <div class="card text-center">
                     <div class="card-block">
                         <div class="card-title">
-                            <img src="../../assets/confirmed.svg" style="height: 2rem; width: 2rem;" alt="icon confirmed"/>
+                            <img src="../../assets/confirmed.svg" style="height: 2rem; width: 2rem;"
+                                alt="icon confirmed" />
                             <br />
                             <h3><b>CONFIRMED</b></h3>
                         </div>
@@ -47,7 +49,8 @@
                 <div class="card text-center">
                     <div class="card-block">
                         <div class="card-title">
-                            <img src="../../assets/recovered.svg" style="height: 2rem; width: 2rem;" alt="icon recovered"/>
+                            <img src="../../assets/recovered.svg" style="height: 2rem; width: 2rem;"
+                                alt="icon recovered" />
                             <br />
                             <h3><b>RECOVERED</b></h3>
                         </div>
@@ -61,7 +64,8 @@
                 <div class="card text-center">
                     <div class="card-block">
                         <div class="card-title">
-                            <img src="../../assets/critical.svg" style="height: 2rem; width: 2rem;" alt="icon critical"/>
+                            <img src="../../assets/critical.svg" style="height: 2rem; width: 2rem;"
+                                alt="icon critical" />
                             <br />
                             <h3><b>CRITICAL</b></h3>
                         </div>
@@ -75,7 +79,7 @@
                 <div class="card text-center">
                     <div class="card-block">
                         <div class="card-title">
-                            <img src="../../assets/death.svg" style="height: 2rem; width: 2rem;" alt="icon death"/>
+                            <img src="../../assets/death.svg" style="height: 2rem; width: 2rem;" alt="icon death" />
                             <br />
                             <h3><b>DEATHS</b></h3>
                         </div>
@@ -88,7 +92,12 @@
         </div>
     </div>
     <ng-template #tweetglobal>
-        <a href="https://twitter.com/intent/tweet?button_hashtag=PolyCovid&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-text="Observez l&#39;état de propagation du #Covid19 sur" data-url="https://Polycovid.net" data-lang="fr" data-show-count="true"></a>
+        <a href="https://twitter.com/intent/tweet?button_hashtag=PolyCovid&ref_src=twsrc%5Etfw"
+            class="twitter-hashtag-button" data-text="Observez l&#39;état de propagation du #Covid19 sur"
+            data-url="https://polycovid.herokuapp.com/" data-lang="fr" data-show-count="true"></a>
     </ng-template>
-    <a *ngIf="country; else tweetglobal" href="https://twitter.com/intent/tweet?button_hashtag=PolyCovid&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-text="Observez l&#39;état de propagation du #Covid19 sur" data-url="https://Polycovid.net/data/" data-lang="fr" data-show-count="true"></a>
+    <a *ngIf="country; else tweetglobal"
+        href="https://twitter.com/intent/tweet?button_hashtag=PolyCovid&ref_src=twsrc%5Etfw"
+        class="twitter-hashtag-button" data-text="Observez l&#39;état de propagation du #Covid19 sur"
+        data-url="https://polycovid.herokuapp.com/" data-lang="fr" data-show-count="true"></a>
 </div>

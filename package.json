@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start": "node server.js",
-    "postinstall": "ng build --aot --prod"
+    "postinstall": "ng build --aot --prod && http-server -S -C cert.pem dist/polycovid/"
   },
   "private": true,
   "dependencies": {

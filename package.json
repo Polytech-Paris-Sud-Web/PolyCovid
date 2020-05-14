@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng build --prod && openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem && http-server -S -C cert.pem dist/polycovid/",
     "start_linux": "ng build --prod && cd dist && if [ ! -f cert.pem ]; then openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem -subj \"/C=FR/ST=IDF/L=Orsay/O=Polytech/CN=PolyCovid\"; fi && http-server -S -C cert.pem ../dist/polycovid/",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start": "node server.js",
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +29,7 @@
     "@clr/ui": "3.1.1",
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "countries-map": "^3.0.0",
+    "express": "^4.17.1",
     "http-server": "^0.12.3",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
@@ -38,10 +40,11 @@
     "@angular/cli": "~9.1.4",
     "@angular/compiler-cli": "~9.1.4",
     "@angular/language-service": "~9.1.4",
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
+    "enhanced-resolve": "^3.3.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -53,5 +56,9 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.8.3"
+  },
+  "engines": {
+    "node": "12.16.2",
+    "npm": "6.14.4"
   }
 }

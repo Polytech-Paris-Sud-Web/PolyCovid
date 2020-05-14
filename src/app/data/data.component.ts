@@ -56,13 +56,13 @@ export class DataComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    // if (this.swUpdate.isEnabled) {
-    //   this.swUpdate.available.subscribe(() => {
-    //       if(confirm("New version available. Load New Version?")) {
-    //           window.location.reload();
-    //       }
-    //   });
-    // }
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.available.subscribe(() => {
+          if(confirm("New version available. Load New Version?")) {
+              window.location.reload();
+          }
+      });
+    }
     this.country = this.resolve_country(this.route.snapshot.paramMap.get('country'));
     if (this.country){
       this.country_data(this.country.name);

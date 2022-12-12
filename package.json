@@ -29,7 +29,7 @@
     "@clr/ui": "3.1.1",
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "countries-map": "^3.0.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "http-server": "^0.12.3",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
